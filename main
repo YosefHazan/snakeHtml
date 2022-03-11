@@ -1,0 +1,114 @@
+<!DOCTYPE html><!--כאן-->
+<html >
+   <head>
+      <title>משחק נחש</title>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <style>
+         .l { 
+            height: 150px;
+            width:152px;
+            border: 1px solid black;
+            border-radius:50%;
+            position: absolute;
+            background-image: url(./\ 1\ \(4\).png);
+            background-repeat:no-repeat;
+            z-index:1 ;
+            background-size: 100%;
+         }
+         #nchsh2{
+            top:100px;
+         }
+         #nchsh{
+            z-index:2 ;
+         }
+         #ohtml {
+            border: 1px solid black; 
+            width:152px;
+            height: 150px;
+            background-image: url(הורדה.jfif);
+         }
+      </style>
+   </head>
+   <body >
+      <div class="l" id="nchsh"></div>
+      <div class="l" id="nchsh2"></div>
+      <div class="l" id="ohtml"></div>
+      <script>
+         of(400,855);
+         var nchsh = [document.querySelectorAll(".l")[1],document.querySelectorAll(".l")[0]] ;  
+         var mikum ={
+            x:0, //right + left
+            y:0 // top + bottom
+         };  
+         var zanav ={
+            x:0, //right + left
+            y:0 // top + bottom
+         };  
+         var index2L =[0,0]
+         var index =[0,0];
+         function g(e){ 
+            mikum.x = nchsh[0].offsetTop;
+            mikum.y = nchsh[0].offsetLeft;
+         
+            zanav.x = nchsh[0].offsetTop;//yy change
+            zanav.y = nchsh[0].offsetLeft; //yy change
+            
+            if(e.key=="ArrowDown"){
+                  mikum.x+=150;
+                 if (770<mikum.x){
+                     alert(" נפסלת\n נסה שוב")
+                     location.reload();
+                  }
+                  move()
+               }
+               
+               if (e.key=="ArrowUp"){
+                  mikum.x-=150;
+                  if (0>mikum.x){
+                     alert(" נפסלת\n נסה שוב")
+                     location.reload();
+                  }
+                  else{
+                     move();                  
+                  }
+               }
+               if (e.key=="ArrowLeft"){
+                  mikum.y-=150;
+                  if (0>mikum.y){
+                     alert(" נפסלת\n נסה שוב")
+                     location.reload();
+                  }
+                  else{
+                     move(); //yy change            
+                  }
+               }
+               if  (e.key=="ArrowRight"){      
+                  mikum.y+=150;
+                  if (1770<mikum.y){
+                     alert(" נפסלת\n נסה שוב")
+                     location.reload();
+                  }
+                  move(); //yy change               
+               }
+               console.log({mikum},{zanav});
+            }
+         
+            function move(){ //yy change
+               nchsh[0].style.top=mikum.x +"px";
+               nchsh[0].style.left=mikum.y +"px";
+               
+               nchsh[1].style.top=zanav.x +"px";          
+               nchsh[1].style.left=zanav.y +"px";          
+            }
+            
+            function of(p1, p2){
+               var o=
+               document.getElementById("ohtml")
+               o.style.top=p1 +"px";
+               o.style.left=p2 +"px";          
+            }
+            document.onkeydown=g;
+      </script>
+   </body>
+</html>
